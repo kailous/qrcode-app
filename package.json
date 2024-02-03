@@ -9,8 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "formidable": "^3.5.1",
+    "jimp": "^0.22.10",
+    "jsqr": "^1.4.0",
+    "multer": "^1.4.5-lts.1",
+    "next": "14.1.0",
+    "next-connect": "^1.0.0",
+    "qrcode-reader": "^1.0.4",
+    "qrcode-svg": "^1.1.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.1.0"
+    "sharp": "^0.33.2"
   }
 }
