@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import QRSetup from '../components/QRSetup';
 import Canvas from '../components/Canvas';
-import Uploads from '../components/Uploads';
+import Uploads from '../components/QRCodeScanner';
 
 const Home = () => {
   const [svg, setSvg] = useState('');

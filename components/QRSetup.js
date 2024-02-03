@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-const QRSetup = ({ setSvg, decodedContent, setDecodedContent }) => {
+// 假设 setSvg 是一个用于设置 SVG 显示的函数
+const QRSetup = ({ setSvg, decodedContent }) => {
   const [formInput, setFormInput] = useState({
-    content: 'Hello World',
+    content: '',
     padding: 4,
     width: 256,
     height: 256,
@@ -14,45 +15,45 @@ const QRSetup = ({ setSvg, decodedContent, setDecodedContent }) => {
     xmlDeclaration: true,
   });
 
-  // 监听decodedContent变化，并设置表单内容
+  // 监听 decodedContent 变化，并自动填写表单及提交
   useEffect(() => {
     if (decodedContent) {
-      setFormInput(formInput => ({ ...formInput, content: decodedContent }));
-      // 清除decodedContent以避免重复提交
-      setDecodedContent('');
+      // 自动填写解码内容到表单
+      setFormInput(prevFormInput => ({ ...prevFormInput, content: decodedContent }));
+      // 这里可以添加自动提交表单的逻辑，或者其他你需要的操作
+      handleSubmit(decodedContent); // 假设提交表单的逻辑已经封装在 handleSubmit 中
     }
-  }, [decodedContent, setDecodedContent]);
+  }, [decodedContent]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormInput(formInput => ({
+    setFormInput({
       ...formInput,
       [name]: type === 'checkbox' ? checked : value,
-    }));
+    });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (content) => {
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formInput),
+      body: JSON.stringify({ ...formInput, content }), // 确保使用最新的内容
     });
 
     if (response.ok) {
       const svg = await response.text();
-      setSvg(svg); // 使用 props 中的 setSvg 函数来更新 SVG 状态
+      setSvg(svg); // 更新 SVG 显示
     } else {
-      alert('Failed to generate QR code.');
+      console.error('Failed to generate QR code.');
     }
   };
 
   return (
     <div>
       <h1>生成自定义二维码</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <div>
           <label>内容:</label>
           <input type="text" name="content" value={formInput.content} onChange={handleInputChange} />
@@ -92,7 +93,7 @@ const QRSetup = ({ setSvg, decodedContent, setDecodedContent }) => {
             拼合（拼合后可编辑性下降。）
           </label>
         </div>
-        <button type="submit">生成二维码</button>
+        <button type="button" onClick={() => handleSubmit(formInput.content)}>Generate QR Code</button>
       </form>
     </div>
   );
