@@ -94,8 +94,9 @@ const QRSetup = ({ setSvg, decodedContent }) => {
         </div>
         <div>
           <label>容错率:</label>
+          <div className='box-radio'>
           {["L", "M", "Q", "H"].map((ecl) => (
-          <label key={ecl}>
+          <label key={ecl} className='custom-radio'>
             <input
               type="radio"
               name="ecl"
@@ -103,9 +104,10 @@ const QRSetup = ({ setSvg, decodedContent }) => {
               checked={formInput.ecl === ecl}
               onChange={(e) => setFormInput({ ...formInput, ecl: e.target.value })}
             />
-            {ecl}
+            <span>{ecl}</span>
           </label>
         ))}
+        </div>
         </div>
         <div>
           <label>
