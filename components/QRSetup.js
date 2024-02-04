@@ -101,7 +101,7 @@ const QRSetup = ({ setSvg, decodedContent }) => {
         </div>
         {/* 容错率 */}
         <div className='row'>
-          <label>容错率:</label>
+          <label>容错:</label>
           <div className='box-radio row'>
             {["L", "M", "Q", "H"].map((ecl) => (
               <label key={ecl} className='custom-radio'>
