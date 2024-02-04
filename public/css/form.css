@@ -55,5 +55,7 @@ input[type="color"]::-webkit-color-swatch {
 form.option button {
     padding:10px;
     border-radius: 10px;
-    border: 0.1px #ffffff solid;
+    background-color: #4caf50;
+    color: white;
+    border: none;
 }
