@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
 import jsQR from 'jsqr';
+import { convertToGrayscale, invertColors, enhanceContrast } from '../utils/imageProcessing';
 
 const QRCodeScanner = ({ onDecode }) => {
   const [dragging, setDragging] = useState(false);
-  const fileInputRef = useRef(null); // 使用 useRef 钩子来引用文件输入元素
+  const inputFileRef = useRef(null);
 
   const handleDragOver = (event) => {
     event.preventDefault();
@@ -20,59 +21,62 @@ const QRCodeScanner = ({ onDecode }) => {
     setDragging(false);
     const files = event.dataTransfer.files;
     if (files.length) {
-      decodeQRCodeFromFile(files[0]);
+      processFile(files[0]);
     }
   };
 
   const handleClick = () => {
-    fileInputRef.current.click(); // 在点击区域时触发文件输入元素的点击事件
+    inputFileRef.current.click();
   };
 
-  const handleFileChange = (event) => {
-    const files = event.target.files;
-    if (files.length) {
-      decodeQRCodeFromFile(files[0]);
-    }
-  };
-
-  const decodeQRCodeFromFile = (file) => {
+  const processFile = (file) => {
     const reader = new FileReader();
     reader.onload = (e) => {
-      const image = new Image();
-      image.onload = () => {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        canvas.width = image.width;
-        canvas.height = image.height;
-        context.drawImage(image, 0, 0, canvas.width, canvas.height);
-        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-        const code = jsQR(imageData.data, imageData.width, imageData.height);
-        if (code) {
-          onDecode(code.data); // 调用父组件传入的处理函数
-        } else {
-          alert('无法识别的二维码');
-        }
-      };
-      image.src = e.target.result;
+      const img = new Image();
+      img.onload = () => processImage(img);
+      img.src = e.target.result;
     };
     reader.readAsDataURL(file);
+  };
+
+  const processImage = (img) => {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    context.drawImage(img, 0, 0, canvas.width, canvas.height);
+    let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+    // 图像处理步骤
+    imageData = convertToGrayscale(imageData);
+    imageData = invertColors(imageData);
+    imageData = enhanceContrast(imageData);
+
+    context.putImageData(imageData, 0, 0);
+    const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+    if (code) {
+      onDecode(code.data);
+    } else {
+      alert('无法识别的二维码，请尝试其他图像。');
+    }
   };
 
   return (
     <div
       onClick={handleClick}
+      onDrop={handleDrop}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
       style={{ border: dragging ? '2px dashed #000' : '2px dashed #ccc', padding: '20px', textAlign: 'center', cursor: 'pointer' }}
     >
       {dragging ? '放到这里' : '点击或拖拽图片到此处'}
       <input
         type="file"
         accept="image/*"
-        style={{ display: 'none' }} // 隐藏文件输入元素
-        onChange={handleFileChange}
-        ref={fileInputRef} // 将引用附加到文件输入元素
+        ref={inputFileRef}
+        onChange={(e) => processFile(e.target.files[0])}
+        style={{ display: 'none' }}
       />
     </div>
   );
