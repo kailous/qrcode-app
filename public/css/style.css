@@ -1,0 +1,8 @@
+/* 引入form.css */
+@import url('form.css');
+
+#body  {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}

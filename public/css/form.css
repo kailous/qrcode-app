@@ -1,0 +1,59 @@
+form.option {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+form.option div {
+    display:flex;
+    flex-direction: row;
+    height: 30px;
+}
+form.option div label {
+    margin-right: 10px;
+}
+form.option div input {
+    height: 100%;
+    overflow: hidden;
+}
+form.option div input[type="text"],
+form.option div input[type="number"]
+{
+    padding:10px;
+    border-radius: 10px;
+    border: 0.1px #ffffff solid;
+}
+form.option div.color {
+    border: 0.1px #ffffff solid;
+    border-radius: 10px;
+    overflow: hidden;
+}
+form.option div.color input[type="text"],
+form.option div.color input[type="number"]
+{
+    padding:10px;
+    border-radius: 0;
+    border: none;
+}
+input[type="color"] {
+    appearance: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 0;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border: none !important;
+    border-radius: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+    border: none !important;
+    border-radius: 0;
+}
+form.option button {
+    padding:10px;
+    border-radius: 10px;
+    border: 0.1px #ffffff solid;
+}
