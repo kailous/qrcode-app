@@ -72,6 +72,41 @@ form.option button {
     border: none;
 }
 
+form.option input[type="checkbox"] {
+    display: none;
+}
+
+.jron label {
+    display: block;
+    width: 50px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+}
+
+.jron label::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 3px;
+    transition: 0.4s;
+}
+
+.jron input[type="checkbox"]:checked+label::before {
+    left: calc(100% - 28px);
+}
+
+.jron input[type="checkbox"]:checked+label {
+    background-color: #007bff;
+}
+
 .box-radio {
     display: flex;
     gap: 0 !important;
@@ -88,20 +123,16 @@ form.option button {
 }
 
 .custom-radio input[type="radio"] {
-    /* 隐藏默认的单选按钮 */
     appearance: none;
     -webkit-appearance: none;
-    /* 可选：定义一个大小，因为隐藏原生单选按钮后可能不会显示任何内容 */
     width: 100%;
     height: 100%;
-    /* 自定义的未选中状态的样式 */
     display: inline-block;
     cursor: pointer;
     position: absolute;
 }
 
 .custom-radio input[type="radio"]:checked {
-    /* 自定义的选中状态的样式 */
     background-color: #007bff;
     border-radius: 0 !important;
 }

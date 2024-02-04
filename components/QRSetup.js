@@ -79,6 +79,7 @@ const QRSetup = ({ setSvg, decodedContent }) => {
           />
         </div>
         <div>
+        <div>
           <label>颜色:</label>
           <div className="color">
           <input type="color" name="color" value={formInput.color} onChange={handleInputChange} />
@@ -91,6 +92,7 @@ const QRSetup = ({ setSvg, decodedContent }) => {
           <input type="color" name="background" value={formInput.background} onChange={handleInputChange} />
           <input type="text" name="background" value={formInput.background} onChange={handleInputChange} pattern="^#[0-9A-Fa-f]{6}$" />
           </div>
+        </div>
         </div>
         <div>
           <label>容错率:</label>
@@ -109,11 +111,10 @@ const QRSetup = ({ setSvg, decodedContent }) => {
         ))}
         </div>
         </div>
-        <div>
-          <label>
-            <input type="checkbox" name="join" checked={formInput.join} onChange={handleInputChange} />
-            拼合（拼合后可编辑性下降。）
-          </label>
+        <div className='jron'>
+            <input id="my-toggle" type="checkbox" name="join" checked={formInput.join} onChange={handleInputChange} />
+            <label htmlFor="my-toggle"></label>
+            <p>拼合（拼合后可编辑性下降。）</p>
         </div>
         <button type="button" onClick={() => handleSubmit(formInput.content)}>刷新二维码</button>
       </form>
