@@ -3,63 +3,75 @@ form.option {
     flex-direction: column;
     gap: 10px;
 }
+
 form.option div {
-    display:flex;
+    display: flex;
     flex-direction: row;
+    align-items: center;
     height: 30px;
     gap: 20px;
+    width: 100%;
 }
+
 form.option div label {
-    /* margin-right: 10px; */
+    white-space: nowrap;
 }
+
 form.option div input {
+    width: 100%;
     height: 100%;
     overflow: hidden;
 }
+
 form.option div input[type="text"],
-form.option div input[type="number"]
-{
-    padding:10px;
+form.option div input[type="number"] {
+    padding: 10px;
     border-radius: 10px;
     border: 0.1px #ffffff solid;
 }
+
 form.option div.color {
     border: 0.1px #ffffff solid;
     border-radius: 10px;
     overflow: hidden;
 }
+
 form.option div.color input[type="text"],
-form.option div.color input[type="number"]
-{
-    padding:10px;
+form.option div.color input[type="number"] {
+    padding: 10px;
     border-radius: 0;
     border: none;
 }
+
 input[type="color"] {
     appearance: none;
-  padding: 0;
-  border: none;
-  outline: none;
-  background: transparent;
-  cursor: pointer;
-  border-radius: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 0;
 }
+
 input[type="color"]::-webkit-color-swatch-wrapper {
     padding: 0;
     border: none !important;
     border-radius: 0;
 }
+
 input[type="color"]::-webkit-color-swatch {
     border: none !important;
     border-radius: 0;
 }
+
 form.option button {
-    padding:10px;
+    padding: 10px;
     border-radius: 10px;
     background-color: #4caf50;
     color: white;
     border: none;
 }
+
 .box-radio {
     display: flex;
     gap: 0 !important;
@@ -67,33 +79,39 @@ form.option button {
     border-radius: 10px;
     overflow: hidden;
 }
+
 .custom-radio {
     display: flex;
     cursor: pointer;
+    width: 100%;
+    position: relative;
 }
+
 .custom-radio input[type="radio"] {
     /* 隐藏默认的单选按钮 */
     appearance: none;
     -webkit-appearance: none;
     /* 可选：定义一个大小，因为隐藏原生单选按钮后可能不会显示任何内容 */
-    width: 50px;
+    width: 100%;
     height: 100%;
     /* 自定义的未选中状态的样式 */
     display: inline-block;
     cursor: pointer;
-  }
-  
-  .custom-radio input[type="radio"]:checked {
+    position: absolute;
+}
+
+.custom-radio input[type="radio"]:checked {
     /* 自定义的选中状态的样式 */
-    border: 2px solid #007bff;
     background-color: #007bff;
-  }
-  .custom-radio span {
+    border-radius: 0 !important;
+}
+
+.custom-radio span {
     text-align: center;
     line-height: 30px;
     display: block;
-    width: 50px;
+    width: 100%;
     height: 100%;
-    /* background-color: #ffffff; */
-    margin-left: -50px;
-  }
+    position: -webkit-sticky;
+    z-index: 99999;
+}
