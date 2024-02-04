@@ -5,7 +5,12 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          {/* 在这里添加全局的 Meta 标签、链接标签、脚本等 */}
+          <title>二维码生成工具</title>
+          <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+          <meta name="mobile-web-app-capable" content="yes"></meta>
+          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></meta>
+          <meta name="color-scheme" content="dark light"></meta>
         </Head>
         <body>
           <Main />

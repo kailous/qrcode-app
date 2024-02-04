@@ -14,7 +14,7 @@ form.option {
 
 form.option div {
     align-items: center;
-    height: var(--control-height);
+    height: var(--control-height) !important;
     gap: var(--gap-medium);
 }
 
@@ -30,7 +30,7 @@ form.option div input {
 
 form.option div input[type="text"],
 form.option div input[type="number"] {
-    padding: 10px;
+    padding: calc(var(--control-height) / 4) !important;
     border-radius: var(--border-radius-big);
     border: 1px #ffffff solid;
 }
