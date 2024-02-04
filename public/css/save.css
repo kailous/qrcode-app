@@ -4,11 +4,11 @@
     gap:20px;
 }
 #save button {
-    width: 100px;
-    height: 40px;
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    padding:calc(var(--control-height) / 4) calc(var(--control-height) / 2) !important;
+    border-radius: var(--border-radius-big);
+    height: var(--control-height);
 }

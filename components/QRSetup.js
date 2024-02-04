@@ -24,7 +24,7 @@ const QRSetup = ({ setSvg, decodedContent }) => {
       handleSubmit(decodedContent); // 假设提交表单的逻辑已经封装在 handleSubmit 中
     }
   }, [decodedContent]);
-  
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (name === "size") {
@@ -58,63 +58,70 @@ const QRSetup = ({ setSvg, decodedContent }) => {
   };
 
   return (
-    <div>
+    <div id='setup' className='column'>
       <h1>生成自定义二维码</h1>
-      <form onSubmit={(e) => e.preventDefault()} className='option'>
-        <div>
+      <form onSubmit={(e) => e.preventDefault()} className='option column'>
+        {/* 内容 */}
+        <div className='row'>
           <label>内容:</label>
           <input type="text" name="content" value={formInput.content} onChange={handleInputChange} />
         </div>
-        <div>
-          <label>边距:</label>
-          <input type="number" name="padding" value={formInput.padding} onChange={handleInputChange} />
-        </div>
-        <div>
-          <label>尺寸:</label>
-          <input
-            type="number"
-            name="size"
-            value={formInput.size} // 注意这里使用size代替了width和height
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-        <div>
-          <label>颜色:</label>
-          <div className="color">
-          <input type="color" name="color" value={formInput.color} onChange={handleInputChange} />
-          <input type="text" name="color" value={formInput.color} onChange={handleInputChange} pattern="^#[0-9A-Fa-f]{6}$" />
+        {/* 边距与尺寸 */}
+        <div className='row'>
+          <div className='row'>
+            <label>边距:</label>
+            <input type="number" name="padding" value={formInput.padding} onChange={handleInputChange} />
           </div>
-        </div>
-        <div>
-          <label>背景:</label>
-          <div className="color">
-          <input type="color" name="background" value={formInput.background} onChange={handleInputChange} />
-          <input type="text" name="background" value={formInput.background} onChange={handleInputChange} pattern="^#[0-9A-Fa-f]{6}$" />
-          </div>
-        </div>
-        </div>
-        <div>
-          <label>容错率:</label>
-          <div className='box-radio'>
-          {["L", "M", "Q", "H"].map((ecl) => (
-          <label key={ecl} className='custom-radio'>
+          <div className='row'>
+            <label>尺寸:</label>
             <input
-              type="radio"
-              name="ecl"
-              value={ecl}
-              checked={formInput.ecl === ecl}
-              onChange={(e) => setFormInput({ ...formInput, ecl: e.target.value })}
+              type="number"
+              name="size"
+              value={formInput.size} // 注意这里使用size代替了width和height
+              onChange={handleInputChange}
             />
-            <span>{ecl}</span>
-          </label>
-        ))}
+          </div>
         </div>
+        {/* 颜色 */}
+        <div className='row'>
+          <div className='row'>
+            <label>颜色:</label>
+            <div className="color row">
+              <input type="color" name="color" value={formInput.color} onChange={handleInputChange} />
+              <input type="text" name="color" value={formInput.color} onChange={handleInputChange} pattern="^#[0-9A-Fa-f]{6}$" />
+            </div>
+          </div>
+          <div className='row'>
+            <label>背景:</label>
+            <div className="color row">
+              <input type="color" name="background" value={formInput.background} onChange={handleInputChange} />
+              <input type="text" name="background" value={formInput.background} onChange={handleInputChange} pattern="^#[0-9A-Fa-f]{6}$" />
+            </div>
+          </div>
         </div>
-        <div className='jron'>
-            <input id="my-toggle" type="checkbox" name="join" checked={formInput.join} onChange={handleInputChange} />
-            <label htmlFor="my-toggle"></label>
-            <p>拼合（拼合后可编辑性下降。）</p>
+        {/* 容错率 */}
+        <div className='row'>
+          <label>容错率:</label>
+          <div className='box-radio row'>
+            {["L", "M", "Q", "H"].map((ecl) => (
+              <label key={ecl} className='custom-radio'>
+                <input
+                  type="radio"
+                  name="ecl"
+                  value={ecl}
+                  checked={formInput.ecl === ecl}
+                  onChange={(e) => setFormInput({ ...formInput, ecl: e.target.value })}
+                />
+                <span>{ecl}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+        {/* 拼合路径 */}
+        <div className='checkbox-slider row'>
+          <input id="my-toggle" type="checkbox" name="join" checked={formInput.join} onChange={handleInputChange} />
+          <label htmlFor="my-toggle"></label>
+          <p>拼合路径（拼合后可编辑性下降。）</p>
         </div>
         <button type="button" onClick={() => handleSubmit(formInput.content)}>刷新二维码</button>
       </form>

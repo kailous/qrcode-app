@@ -1,0 +1,45 @@
+/* 
+styles/root.css
+变量
+*/
+
+/* 尺寸变量 */
+:root {
+    --max-width: 1100px;
+    --control-height:40px;
+    --checkbox-slider-padding:3px;
+}
+/* 参数变量 */
+:root {
+    --border-radius-big: 20px !important;
+    --border-radius-medium: 10px !important;
+    --border-radius-small:5px !important;
+    --border-radius-none:0 !important;
+    --gap-big:30px !important;
+    --gap-medium:20px !important;
+    --gap-small:10px !important;
+    --gap-none:0 !important;
+}
+
+
+/* 亮色模式 */
+@media (prefers-color-scheme: light) {
+    html {
+        color-scheme: light;
+    }
+
+    :root {
+        --background-color: hsla(255, 255, 255, 1);
+    }
+}
+
+/* 暗色模式 */
+@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: dark;
+    }
+
+    :root {
+        --background-color: hsla(0, 0, 0, 1);
+    }
+}
