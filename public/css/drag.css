@@ -1,0 +1,11 @@
+#drag {
+    border: 1.5px dashed #ccc;
+    padding: 20px;
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+    max-height: 140px;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-big);
+}

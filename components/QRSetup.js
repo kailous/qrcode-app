@@ -14,6 +14,15 @@ const QRSetup = ({ setSvg, decodedContent }) => {
     xmlDeclaration: true,
   });
 
+  // 容错率映射
+  const eclDescriptions = {
+    L: "低",
+    M: "中",
+    Q: "较高",
+    H: "高"
+  };
+
+
   // 监听 decodedContent 变化，并自动填写表单及提交
   useEffect(() => {
     if (decodedContent) {
@@ -66,10 +75,8 @@ const QRSetup = ({ setSvg, decodedContent }) => {
         </div>
         {/* 边距与尺寸 */}
         <div className='row'>
-          <div className='row'>
-            <label>边距:</label>
-            <input type="number" name="padding" value={formInput.padding} onChange={handleInputChange} />
-          </div>
+          <label>边距:</label>
+          <input type="number" name="padding" value={formInput.padding} onChange={handleInputChange} />
         </div>
         {/* 颜色 */}
         <div className='row'>
@@ -101,7 +108,7 @@ const QRSetup = ({ setSvg, decodedContent }) => {
                   checked={formInput.ecl === ecl}
                   onChange={(e) => setFormInput({ ...formInput, ecl: e.target.value })}
                 />
-                <span>{ecl}</span>
+                <span>{eclDescriptions[ecl]}</span>
               </label>
             ))}
           </div>

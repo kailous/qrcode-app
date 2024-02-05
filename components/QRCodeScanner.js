@@ -78,7 +78,7 @@ const QRCodeScanner = ({ onDecode }) => {
       onDrop={handleDrop}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
-      style={{ border: dragging ? '2px dashed #000' : '2px dashed #ccc', padding: '20px', textAlign: 'center', cursor: 'pointer' }}
+      id='drag'
     >
       {dragging ? '放到这里' : '点击或拖拽图片到此处'}
       {processingStatus && <div>{processingStatus}</div>}

@@ -23,13 +23,14 @@ form.option div label {
 }
 
 form.option div input {
-    width: 100%;
-    height: 100%;
     overflow: hidden;
+    background: none !important;
 }
 
 form.option div input[type="text"],
 form.option div input[type="number"] {
+    width: 100%;
+    height: 100%;
     padding: calc(var(--control-height) / 4) !important;
     border-radius: var(--border-radius-big);
     border: 1px #ffffff solid;
@@ -46,6 +47,9 @@ input[type="text"],
 input[type="number"] {
     padding: calc(var(--control-height) / 4) !important;
 }
+/* div.color input[type="text"] {
+    width: auto !important;
+} */
 form.option div.color input[type="text"],
 form.option div.color input[type="number"] {
     border-radius: 0;
@@ -53,24 +57,32 @@ form.option div.color input[type="number"] {
 }
 
 input[type="color"] {
+    width: calc(var(--control-height) + (var(--control-height) / 4) ) !important;
+    height:  calc(var(--control-height) - var(--checkbox-slider-padding) - var(--checkbox-slider-padding)) !important;
+    margin: var(--checkbox-slider-padding);
     appearance: none;
     padding: 0;
     border: none;
     outline: none;
     background: transparent;
     cursor: pointer;
-    border-radius: 0;
+    border-radius: calc(var(--border-radius-big) - var(--checkbox-slider-padding));
 }
 
 input[type="color"]::-webkit-color-swatch-wrapper {
+    width: 100%;
+    height: 100%;
     padding: 0;
     border: none !important;
-    border-radius: 0;
+    display: block;
+    border-radius: var(--border-radius-big);
 }
 
 input[type="color"]::-webkit-color-swatch {
+    width: 100%;
+    height: 100%;
     border: none !important;
-    border-radius: 0;
+    display: block;
 }
 
 form.option button {

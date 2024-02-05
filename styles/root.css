@@ -7,7 +7,7 @@ styles/root.css
 :root {
     --max-width: 1100px;
     --control-height:48px;
-    --checkbox-slider-padding:3px;
+    --checkbox-slider-padding:5px;
 }
 /* 参数变量 */
 :root {

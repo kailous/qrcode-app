@@ -2,6 +2,7 @@
 @import url('form.css');
 @import url('save.css');
 @import url('canva.css');
+@import url('drag.css');
 
 #__next {
     display: flex;
