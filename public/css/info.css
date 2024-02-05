@@ -12,10 +12,44 @@
     align-items: center;
     flex-wrap: nowrap;
     flex-direction: row;
+    justify-content: space-between;
     /* 动画 */
     transition: top 0.5s ease;
 }
+#info button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 0%;
+    /* 删除原始按钮样式 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transform: rotate(0deg);
+    transition: transform 0.5s ease;
+    overflow: visible;
+}
+#info button:hover {
+    transform: rotate(180deg);
+    /* 动画 */
+    transition: transform 0.5s ease;
+}
+#info button:hover svg {
+    stroke-width: 6px;
+    stroke-linecap:round;
+}
+#info button svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    stroke-width: 3px;
+    stroke-linecap:round;
+}
 .error {
     top: 20px !important;
-    background-color: rgba(255, 0, 0, 0.80);
+    background-color: rgba(142,33,11,0.90)!important;
+}
+.success {
+    top: 20px !important;
+    background-color: rgba(11,142,66,0.90)!important;
 }

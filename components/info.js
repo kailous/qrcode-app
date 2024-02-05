@@ -1,53 +1,67 @@
 import React, { useState, useEffect } from 'react';
 
-const Info = ({ errorMessage, onResetErrorMessage }) => {
+const Info = ({ errorMessage, successMessage, onResetMessages }) => {
     // 使用 useState 来管理 className 的状态和按钮的可见性
     const [infoClassName, setInfoClassName] = useState('');
     const [isButtonVisible, setIsButtonVisible] = useState(false);
 
-    // 创建一个独立的函数来设置 className
-    const errorOn = () => {
-        setInfoClassName('error');
-        setIsButtonVisible(true);
-        // 设置错误消息
-        errorMessage = errorMessage;
-    }
-
-    // 创建一个函数来移除错误类名和隐藏按钮
-    const errorOff = () => {
-        setInfoClassName('');
-        setIsButtonVisible(false);
-        // 关闭错误消息
-        errorMessage = null;
-        // 重置错误消息
-        onResetErrorMessage();
+    // 创建一个函数来设置 className
+    const setMessageType = (type) => {
+        if (type === 'error') {
+            setInfoClassName('error');
+            setIsButtonVisible(true);
+        } else if (type === 'success') {
+            setInfoClassName('success');
+            setIsButtonVisible(true);
+        }
     };
 
-    // 监听错误消息的变化
+    // 创建一个函数来移除样式和隐藏按钮，并重置消息
+    const clearMessages = () => {
+        setInfoClassName('');
+        setIsButtonVisible(false);
+    };
+
+    // 监听错误消息和成功消息的变化
     useEffect(() => {
         if (errorMessage) {
-            errorOn();
+            setMessageType('error');
+            // 如果收到成功消息，等待3秒后清除消息
+            setTimeout(() => {
+                handleButtonClick();
+            }, 6000);
+        } else if (successMessage) {
+            setMessageType('success');
+            // 如果收到成功消息，等待3秒后清除消息
+            setTimeout(() => {
+                handleButtonClick();
+            }, 6000);
         } else {
-            errorOff();
+            clearMessages();
         }
-    }, [errorMessage]);
+    }, [errorMessage, successMessage]);
 
-    // 在按钮点击时触发 errorOff 函数
+    // 在按钮点击时触发 clearMessages 函数
     const handleButtonClick = () => {
-        errorOff();
+        clearMessages();
         // 等待1秒后刷新页面
         setTimeout(() => {
             window.location.reload();
-        }, 600);
+        }, 1000);
     };
 
     return (
         <div id='info' className={infoClassName}>
             {/* 其他信息 */}
-            {errorMessage && (
+            {(errorMessage || successMessage) && (
                 <>
-                    {errorMessage}
-                    <button onClick={handleButtonClick}>关闭</button>
+                    {errorMessage && <div className="message">{errorMessage}</div>}
+                    {successMessage && <div className="message">{successMessage}</div>}
+                    {isButtonVisible && <button onClick={handleButtonClick}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32">
+  <path stroke="currentColor" stroke-linecap="currentColor" stroke-width="currentColor" d="m4 4 24 24m0-24L4 28"/>
+</svg>
+                        </button>}
                 </>
             )}
         </div>
