@@ -9,8 +9,6 @@ export default function handler(req, res) {
     const {
       content,
       padding = 4,
-      width = 256,
-      height = 256,
       color = "#000000",
       background = "#ffffff",
       ecl = "M",
@@ -23,8 +21,6 @@ export default function handler(req, res) {
       const qrcode = new QRCode({
         content,
         padding: parseInt(padding, 10),
-        width: parseInt(width, 10),
-        height: parseInt(height, 10),
         color,
         background,
         ecl,

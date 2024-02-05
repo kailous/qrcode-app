@@ -6,7 +6,6 @@ const QRSetup = ({ setSvg, decodedContent }) => {
   const [formInput, setFormInput] = useState({
     content: ' Rainforest',
     padding: 4,
-    size: 256, // 使用size代替了width和height，并设置默认值为256
     color: "#000000",
     background: "#ffffff",
     ecl: "M",
@@ -70,15 +69,6 @@ const QRSetup = ({ setSvg, decodedContent }) => {
           <div className='row'>
             <label>边距:</label>
             <input type="number" name="padding" value={formInput.padding} onChange={handleInputChange} />
-          </div>
-          <div className='row'>
-            <label>尺寸:</label>
-            <input
-              type="number"
-              name="size"
-              // value={formInput.size} // 注意这里使用size代替了width和height
-              onChange={handleInputChange}
-            />
           </div>
         </div>
         {/* 颜色 */}
