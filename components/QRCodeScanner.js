@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import jsQR from 'jsqr';
 import { convertToGrayscale, invertColors, enhanceContrast } from '../utils/imageProcessing';
 
-const QRCodeScanner = ({ onDecode }) => {
+const QRCodeScanner = ({ onDecode, onError }) => {
   const [dragging, setDragging] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [processingStatus, setProcessingStatus] = useState('');
@@ -67,8 +67,10 @@ const QRCodeScanner = ({ onDecode }) => {
       onDecode(code.data);
       setProcessingStatus(''); // 清除处理状态
     } else {
-      setErrorMessage('无法识别的二维码，请尝试其他图像。');
-      setProcessingStatus(''); // 清除处理状态
+      const errorMessage = '无法识别的二维码，请尝试其他图像。'; // 这是示例错误消息
+      setProcessingStatus(''); // 清除错误消息
+      // 在这里调用传递的 onError 函数
+      onError(errorMessage);
     }
   };
 
@@ -80,7 +82,7 @@ const QRCodeScanner = ({ onDecode }) => {
       onDragLeave={handleDragLeave}
       id='drag'
     >
-      {dragging ? '放到这里' : '点击或拖拽图片到此处'}
+      {dragging ? '可以松手啦' : '点击或拖拽二维码图片到此处'}
       {processingStatus && <div>{processingStatus}</div>}
       {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
       <input

@@ -3,6 +3,7 @@
 @import url('save.css');
 @import url('canva.css');
 @import url('drag.css');
+@import url('info.css');
 
 #__next {
     display: flex;

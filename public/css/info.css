@@ -1,0 +1,21 @@
+#info {
+    width: calc(var(--max-width) - var(--gap-medium));
+    height: 100px;
+    position: fixed;
+    display: flex;
+    top: -100px;
+    z-index: 999999;
+    padding: 30px;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-radius: var(--border-radius-big);
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    /* 动画 */
+    transition: top 0.5s ease;
+}
+.error {
+    top: 20px !important;
+    background-color: rgba(255, 0, 0, 0.80);
+}
