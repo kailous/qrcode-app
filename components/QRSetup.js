@@ -11,7 +11,7 @@ const QRSetup = ({ setSvg, decodedContent }) => {
     background: "#ffffff",
     ecl: "M",
     join: false,
-    container: "svg",
+    container: "svg-viewbox",
     xmlDeclaration: true,
   });
 
@@ -58,8 +58,7 @@ const QRSetup = ({ setSvg, decodedContent }) => {
   };
 
   return (
-    <div id='setup' className='column'>
-      <h1>生成自定义二维码</h1>
+    <>
       <form onSubmit={(e) => e.preventDefault()} className='option column'>
         {/* 内容 */}
         <div className='row'>
@@ -77,7 +76,7 @@ const QRSetup = ({ setSvg, decodedContent }) => {
             <input
               type="number"
               name="size"
-              value={formInput.size} // 注意这里使用size代替了width和height
+              // value={formInput.size} // 注意这里使用size代替了width和height
               onChange={handleInputChange}
             />
           </div>
@@ -125,7 +124,7 @@ const QRSetup = ({ setSvg, decodedContent }) => {
         </div>
         <button type="button" onClick={() => handleSubmit(formInput.content)}>刷新二维码</button>
       </form>
-    </div>
+    </>
   );
 };
 

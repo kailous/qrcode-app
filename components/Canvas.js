@@ -6,7 +6,7 @@ import React from 'react';
 const Canvas = ({ svg }) => {
   // 使用 dangerouslySetInnerHTML 渲染 SVG 字符串
   return (
-    <div dangerouslySetInnerHTML={{ __html: svg }} />
+    <div id='canva' dangerouslySetInnerHTML={{ __html: svg }} />
   );
 };
 

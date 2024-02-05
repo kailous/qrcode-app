@@ -1,11 +1,21 @@
 /* 引入form.css */
 @import url('form.css');
 @import url('save.css');
+@import url('canva.css');
 
-#body  {
+#__next {
     display: flex;
-    flex-direction: column;
-    gap:20px;
-    padding: 0 50px;
+    flex-direction: row;
+    gap: 20px;
+    padding: 0 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+}
+
+#left,#right {
+    width: 50% !important;
+    gap:20px;
+    justify-content: space-between;
+    /* background-color: blueviolet; */
+    /* 测试 */
 }
