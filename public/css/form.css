@@ -5,7 +5,7 @@ public/css/form.css
 
 /* 表单布局 */
 #setup {
-    gap:var(--gap-big);
+    gap: var(--gap-big);
 }
 
 form.option {
@@ -46,6 +46,7 @@ form.option div.color {
     border-radius: var(--border-radius-big);
     background-color: var(--input-color) !important;
 }
+
 form.option div.color input[type="text"] {
     background: none !important;
 }
@@ -54,18 +55,31 @@ input[type="text"],
 input[type="number"] {
     padding: calc(var(--control-height) / 4) !important;
 }
+
 /* div.color input[type="text"] {
     width: auto !important;
 } */
-form.option div.color input[type="text"],
-form.option div.color input[type="number"] {
+form.option div.color input[type="text"] {
     border-radius: 0;
     border: none;
+    text-transform: uppercase;
 }
 
+form.option div.color input[type="text"]:focus,
+input:not(.color input):focus {
+    border: none;
+    outline: none;
+}
+ 
+.color:focus-within,
+input:not(.color input):focus {
+    outline: 2px var(--highlight-color) solid !important;
+}
+
+
 input[type="color"] {
-    width: calc(var(--control-height) + (var(--control-height) / 4) ) !important;
-    height:  calc(var(--control-height) - var(--checkbox-slider-padding) - var(--checkbox-slider-padding)) !important;
+    width: calc(var(--control-height) + (var(--control-height) / 4)) !important;
+    height: calc(var(--control-height) - var(--checkbox-slider-padding) - var(--checkbox-slider-padding)) !important;
     margin: var(--checkbox-slider-padding);
     appearance: none;
     padding: 0;
@@ -109,7 +123,7 @@ form.option input[type="checkbox"] {
     display: block;
     width: calc(var(--control-height) * 1.8);
     height: 100%;
-    background-color: var(--input-color) !important;
+    background-color: var(--background-color-dark) !important;
     border: var(--input-border-color) solid 1px;
     border-radius: calc(var(--control-height) / 2);
     position: relative;
@@ -129,11 +143,11 @@ form.option input[type="checkbox"] {
     transition: 0.4s;
 }
 
-.checkbox-slider input[type="checkbox"]:checked + label::before {
+.checkbox-slider input[type="checkbox"]:checked+label::before {
     left: calc(100% - var(--control-height) + var(--checkbox-slider-padding));
 }
 
-.checkbox-slider input[type="checkbox"]:checked + label {
+.checkbox-slider input[type="checkbox"]:checked+label {
     background-color: var(--highlight-color) !important;
 }
 
@@ -167,14 +181,17 @@ form.option input[type="checkbox"] {
     background-color: var(--highlight-color) !important;
     border-radius: 0 !important;
 }
-.custom-radio input[type="radio"]:checked + span {
+
+.custom-radio input[type="radio"]:checked+span {
     color: var(--text-reverse-color) !important;
 }
+
 @media (prefers-color-scheme: dark) {
-    .custom-radio input[type="radio"]:checked + span {
+    .custom-radio input[type="radio"]:checked+span {
         color: var(--text-color) !important;
     }
 }
+
 .custom-radio span {
     text-align: center;
     line-height: var(--control-height);

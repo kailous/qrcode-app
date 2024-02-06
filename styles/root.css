@@ -26,6 +26,7 @@ styles/root.css
     html {color-scheme: light;}
     :root {
         --background-color: hsla(0, 0%, 92%, 1);
+        --background-color-dark: hsla(0, 0%, 44%, 1);
         --error-color: hsla(10, 86%, 30%, 0.9);
         --success-color: hsla(145, 86%, 30%, 0.9);
         --highlight-color: hsla(218, 100%, 45%, 1);
@@ -41,6 +42,7 @@ styles/root.css
     html {color-scheme: dark;}
     :root {
         --background-color: hsla(0, 0%, 0%, 1);
+        --background-color-dark: hsla(0, 0%, 22%, 1);
         --error-color: hsla(10, 86%, 30%, 0.9);
         --success-color: hsla(145, 86%, 30%, 0.9);
         --highlight-color: hsla(218, 100%, 45%, 1);
