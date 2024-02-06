@@ -74,9 +74,16 @@ const QRSetup = ({ setSvg, decodedContent }) => {
           <input type="text" name="content" value={formInput.content} onChange={handleInputChange} />
         </div>
         {/* 边距与尺寸 */}
-        <div className='row'>
-          <label>边距:</label>
-          <input type="number" name="padding" value={formInput.padding} onChange={handleInputChange} />
+        <div className='range column'>
+          <div className='range-text row'>
+            <label>边距:</label><span>{formInput.padding}</span>
+          </div>
+          <div className='range-slider'>
+            <input type="range" name="padding" value={formInput.padding} onChange={handleInputChange} min="0" max="10" />
+            <div className='slide-rail'>
+              <div className='slider' style={{ width: `${formInput.padding * 10}%` }}></div>
+            </div>
+          </div>
         </div>
         {/* 颜色 */}
         <div className='row'>
