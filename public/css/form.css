@@ -101,6 +101,7 @@ input[type="range"] {
     width: 100%;
     height: var(--control-height);
     -webkit-appearance: none;
+    appearance: none;
     border-radius: var(--border-radius-big);
     overflow: hidden;
     cursor: pointer;
