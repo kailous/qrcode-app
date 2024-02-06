@@ -29,20 +29,27 @@ form.option div input {
 
 form.option div input[type="text"],
 form.option div input[type="number"] {
+    color: var(--text-color);
     width: 100%;
     height: 100%;
     padding: calc(var(--control-height) / 4) !important;
     border-radius: var(--border-radius-big);
-    border: 1px #ffffff solid;
+    border: 1px var(--input-border-color) solid;
+    background-color: var(--input-color) !important;
 }
 
 form.option div.color {
-    border: 1px #ffffff solid;
+    border: 1px var(--input-border-color) solid;
     border-radius: 10px;
     overflow: hidden;
     gap: var(--gap-none);
     border-radius: var(--border-radius-big);
+    background-color: var(--input-color) !important;
 }
+form.option div.color input[type="text"] {
+    background: none !important;
+}
+
 input[type="text"],
 input[type="number"] {
     padding: calc(var(--control-height) / 4) !important;
@@ -88,7 +95,7 @@ input[type="color"]::-webkit-color-swatch {
 form.option button {
     padding: calc(var(--control-height) / 4) !important;
     border-radius: var(--border-radius-big);
-    background-color: #4caf50;
+    background-color: var(--highlight-color);
     color: white;
     border: none;
     height: var(--control-height);
@@ -102,7 +109,8 @@ form.option input[type="checkbox"] {
     display: block;
     width: calc(var(--control-height) * 1.8);
     height: 100%;
-    background-color: #ccc;
+    background-color: var(--input-color) !important;
+    border: var(--input-border-color) solid 1px;
     border-radius: calc(var(--control-height) / 2);
     position: relative;
     cursor: pointer;
@@ -121,20 +129,21 @@ form.option input[type="checkbox"] {
     transition: 0.4s;
 }
 
-.checkbox-slider input[type="checkbox"]:checked+label::before {
+.checkbox-slider input[type="checkbox"]:checked + label::before {
     left: calc(100% - var(--control-height) + var(--checkbox-slider-padding));
 }
 
-.checkbox-slider input[type="checkbox"]:checked+label {
-    background-color: #007bff;
+.checkbox-slider input[type="checkbox"]:checked + label {
+    background-color: var(--highlight-color) !important;
 }
 
 .box-radio {
     display: flex;
     gap: 0 !important;
-    background-color: #373737;
     border-radius: var(--border-radius-big);
     overflow: hidden;
+    background-color: var(--input-color) !important;
+    border: 1px var(--input-border-color) solid;
 }
 
 .custom-radio {
@@ -155,10 +164,17 @@ form.option input[type="checkbox"] {
 }
 
 .custom-radio input[type="radio"]:checked {
-    background-color: #007bff;
+    background-color: var(--highlight-color) !important;
     border-radius: 0 !important;
 }
-
+.custom-radio input[type="radio"]:checked + span {
+    color: var(--text-reverse-color) !important;
+}
+@media (prefers-color-scheme: dark) {
+    .custom-radio input[type="radio"]:checked + span {
+        color: var(--text-color) !important;
+    }
+}
 .custom-radio span {
     text-align: center;
     line-height: var(--control-height);

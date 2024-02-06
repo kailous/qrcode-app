@@ -47,9 +47,9 @@
 }
 .error {
     top: 20px !important;
-    background-color: rgba(142,33,11,0.90)!important;
+    background-color: var(--error-color) !important;
 }
 .success {
     top: 20px !important;
-    background-color: rgba(11,142,66,0.90)!important;
+    background-color: var(--success-color) !important;
 }
