@@ -6,7 +6,6 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <title>QRCode Studio | 二维码生成工具</title>
-          <script src="/js/icons.js"></script>
         </Head>
         <body>
           <Main />
