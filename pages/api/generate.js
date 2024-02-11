@@ -28,7 +28,6 @@ export default function handler(req, res) {
         container,
         xmlDeclaration,
       });
-
       const svg = qrcode.svg();
       res.setHeader('Content-Type', 'image/svg+xml');
       res.status(200).send(svg);
