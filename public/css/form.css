@@ -168,6 +168,7 @@ form.option button {
     color: white;
     border: none;
     height: var(--control-height);
+    cursor: pointer;
 }
 
 form.option input[type="checkbox"] {
