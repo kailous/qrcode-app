@@ -35,7 +35,7 @@ const Info = ({ errorMessage, successMessage, onResetMessages }) => {
             // 如果收到成功消息，等待3秒后清除消息
             setTimeout(() => {
                 handleButtonClick();
-            }, 60000);
+            }, 6000);
         } else {
             clearMessages();
         }
