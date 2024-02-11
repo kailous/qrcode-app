@@ -79,7 +79,7 @@ const QRSetup = ({ setSvg, decodedContent }) => {
             <label>边距:</label><span>{formInput.padding}</span>
           </div>
           <div className='range-slider'>
-            <input type="range" name="padding" value={formInput.padding} onChange={handleInputChange} min="0" max="10" />
+            <input type="range" name="padding" value={formInput.padding} onChange={handleInputChange} min="1" max="10" />
             <div className='slide-rail'>
               <div className='slider' style={{ width: `${formInput.padding * 10}%` }}></div>
             </div>

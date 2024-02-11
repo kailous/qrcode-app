@@ -113,10 +113,11 @@ input[type="range"]::-webkit-slider-thumb, input[type="range"]::-webkit-media-sl
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: var(--highlight-color);
+    background:none;
     cursor: pointer;
     z-index: 9999999;
     position: relative;
+    box-shadow: none;
 }
 .slide-rail {
     position: absolute;

@@ -26,7 +26,7 @@ const Home = () => {
     // 重置成功消息
     setTimeout(() => {
       setSuccessMessage('');
-    }, 6000); // 3秒后清除成功消息
+    }, 60000); // 3秒后清除成功消息
   };
 
   // 创建一个函数来重新初始化 errorMessage 和 successMessage

@@ -35,7 +35,7 @@ const Info = ({ errorMessage, successMessage, onResetMessages }) => {
             // 如果收到成功消息，等待3秒后清除消息
             setTimeout(() => {
                 handleButtonClick();
-            }, 6000);
+            }, 60000);
         } else {
             clearMessages();
         }
@@ -59,7 +59,7 @@ const Info = ({ errorMessage, successMessage, onResetMessages }) => {
                     {successMessage && <div className="message">{successMessage}</div>}
                     {isButtonVisible && <button onClick={handleButtonClick}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32">
-  <path stroke="currentColor" stroke-linecap="currentColor" stroke-width="currentColor" d="m4 4 24 24m0-24L4 28"/>
+  <path stroke="currentColor" strokeLinecap="currentColor" strokeWidth="currentColor" d="m4 4 24 24m0-24L4 28"/>
 </svg>
                         </button>}
                 </>

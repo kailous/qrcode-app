@@ -4,6 +4,7 @@
 @import url('canva.css');
 @import url('drag.css');
 @import url('info.css');
+@import url('responsive.css');
 
 #__next {
     display: flex;
@@ -15,7 +16,7 @@
 }
 
 #left,#right {
-    width: 50% !important;
+    width: 50%;
     gap:20px;
     justify-content: space-between;
     /* background-color: blueviolet; */
